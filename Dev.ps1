@@ -2,11 +2,14 @@ $Boxstarter.RebootOk=$true # Allow reboots?
 $Boxstarter.NoPassword=$false # Is this a machine with no login password?
 $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
 
+# Windows Configuration
 Install-WindowsUpdate -AcceptEula
 Update-ExecutionPolicy RemoteSigned
 Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
+
+md C:\Projects
 
 choco install powershell4
 
