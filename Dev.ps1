@@ -7,7 +7,9 @@ Disable-UAC
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
 
-md C:\Projects
+if(!(Test-Path -Path C:\Projects )){
+    md C:\Projects
+}
 
 choco install IIS-WebServerRole -source windowsfeatures -y
 choco install TelnetClient -source windowsFeatures -y
