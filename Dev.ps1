@@ -60,3 +60,6 @@ $env:PSModulePath = $env:PSModulePath + ";C:\Program Files (x86)\Git\bin"
 Install-ChocolateyPinnedTaskBarItem "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe"
 Install-ChocolateyPinnedTaskBarItem "$env:programfiles\console\console.exe"
 Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Notepad++\notepad++.exe"
+
+Install-ChocolateyFileAssociation ".build" "$env:programfiles\Notepad++\notepad++.exe"
+Install-ChocolateyFileAssociation ".config" "$env:programfiles\Notepad++\notepad++.exe"
