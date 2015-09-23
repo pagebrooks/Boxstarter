@@ -42,6 +42,7 @@ choco install winmerge
 choco install windirstat
 choco install filezilla
 choco install visualstudiocode
+choco install stylecop
     
 # Without Git, we might as well go home.
 choco install git.install
