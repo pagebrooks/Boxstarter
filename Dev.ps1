@@ -10,44 +10,44 @@ Enable-RemoteDesktop
 
 choco install powershell4
 
-cinst IIS-WebServerRole -y -source windowsfeatures
-cinst TelnetClient -y -source windowsFeatures
-cinst IIS-HttpCompressionDynamic -y -source windowsfeatures
-cinst IIS-ManagementScriptingTools -y -source windowsfeatures
-cinst IIS-WindowsAuthentication -y -source windowsfeatures
+choco install IIS-WebServerRole -source windowsfeatures
+choco install TelnetClient -source windowsFeatures
+choco install IIS-HttpCompressionDynamic -source windowsfeatures
+choco install IIS-ManagementScriptingTools -source windowsfeatures
+choco install IIS-WindowsAuthentication -source windowsfeatures
 
 choco install javaruntime
 choco install golang
 
-cinst GoogleChrome -y
-cinst Firefox -y
+choco install GoogleChrome
+choco install Firefox
 
-cinst hipchat -y
-cinst 7Zip -y
-cinst NugetPackageExplorer -y
-cinst console-devel -y
-cinst greenshot -y
+choco install hipchat
+choco install 7Zip
+choco install NugetPackageExplorer
+choco install console-devel
+choco install greenshot
 choco install paint.net
-cinst fiddler4 -y
+choco install fiddler4
 choco install curl
-cinst notepadplusplus.install -y
+choco install notepadplusplus.install
 choco install gow
-cinst regexpixie -y
-cinst linqpad -y
-cinst dotpeek -y
-cinst winmerge -y
-cinst windirstat -y
-cinst filezilla -y
+choco install regexpixie
+choco install linqpad
+choco install dotpeek
+choco install winmerge
+choco install windirstat
+choco install filezilla
 choco install visualstudiocode
     
 # Without Git, we might as well go home.
 choco install git.install
-cinst poshgit -y
-cinst git-credential-winstore -y -Version 1.2.0.0
+choco install poshgit
+choco install git-credential-winstore -Version 1.2.0.0
 
 choco install VisualStudio2013Professional -InstallArguments "WebTools"
 choco install webpi
-cinst resharper -y
+choco install resharper
 
 # Fix SSH-Agent error by adding the bin directory to the `Path` environment variable
 $env:PSModulePath = $env:PSModulePath + ";C:\Program Files (x86)\Git\bin"
