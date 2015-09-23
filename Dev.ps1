@@ -11,46 +11,44 @@ Enable-RemoteDesktop
 
 md C:\Projects
 
-choco install powershell4
+choco install IIS-WebServerRole -source windowsfeatures -y
+choco install TelnetClient -source windowsFeatures -y
+choco install IIS-HttpCompressionDynamic -source windowsfeatures -y
+choco install IIS-ManagementScriptingTools -source windowsfeatures -y
+choco install IIS-WindowsAuthentication -source windowsfeatures -y
 
-choco install IIS-WebServerRole -source windowsfeatures
-choco install TelnetClient -source windowsFeatures
-choco install IIS-HttpCompressionDynamic -source windowsfeatures
-choco install IIS-ManagementScriptingTools -source windowsfeatures
-choco install IIS-WindowsAuthentication -source windowsfeatures
+choco install javaruntime -y
+choco install golang -y
 
-choco install javaruntime
-choco install golang
+choco install GoogleChrome -y
+choco install Firefox -y
 
-choco install GoogleChrome
-choco install Firefox
-
-choco install hipchat
-choco install 7Zip
-choco install NugetPackageExplorer
-choco install console-devel
-choco install greenshot
-choco install fiddler4
-choco install curl
-choco install notepadplusplus.install
-choco install gow
-choco install regexpixie
-choco install linqpad
-choco install dotpeek
-choco install winmerge
-choco install windirstat
-choco install filezilla
-choco install visualstudiocode
-choco install stylecop
+choco install hipchat -y
+choco install 7Zip -y
+choco install NugetPackageExplorer -y
+choco install console-devel -y
+choco install greenshot -y
+choco install fiddler4 -y
+choco install curl -y
+choco install notepadplusplus.install -y
+choco install gow -y
+choco install regexpixie -y
+choco install linqpad -y
+choco install dotpeek -y
+choco install winmerge -y
+choco install windirstat -y
+choco install filezilla -y
+choco install visualstudiocode -y
+choco install stylecop -y
     
 # Without Git, we might as well go home.
-choco install git.install
-choco install poshgit
-choco install git-credential-winstore -Version 1.2.0.0
+choco install git.install -y
+choco install poshgit -y
+choco install git-credential-winstore -Version 1.2.0.0 -y
 
-choco install VisualStudio2013Professional -InstallArguments "WebTools"
-choco install webpi
-choco install resharper
+choco install VisualStudio2013Professional -InstallArguments "WebTools" -y
+choco install webpi -y
+choco install resharper -y
 
 # Fix SSH-Agent error by adding the bin directory to the `Path` environment variable
 $env:PSModulePath = $env:PSModulePath + ";C:\Program Files (x86)\Git\bin"
