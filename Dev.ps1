@@ -3,7 +3,6 @@ $Boxstarter.NoPassword=$false # Is this a machine with no login password?
 $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
 
 # Windows Configuration
-Install-WindowsUpdate -AcceptEula
 Update-ExecutionPolicy RemoteSigned
 Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
 Disable-UAC
@@ -64,3 +63,5 @@ Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Notepad++\notepad++.exe"
 
 Install-ChocolateyFileAssociation ".build" "$env:programfiles\Notepad++\notepad++.exe"
 Install-ChocolateyFileAssociation ".config" "$env:programfiles\Notepad++\notepad++.exe"
+
+Install-WindowsUpdate -AcceptEula
