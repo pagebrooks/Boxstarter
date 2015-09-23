@@ -7,7 +7,7 @@ Disable-UAC
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
 
-if(!(Test-Path -Path C:\Projects )){
+if(!(Test-Path -Path C:\Projects)){
     md C:\Projects
 }
 
