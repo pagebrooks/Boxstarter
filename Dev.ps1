@@ -6,6 +6,7 @@ $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a r
 Install-WindowsUpdate -AcceptEula
 Update-ExecutionPolicy RemoteSigned
 Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
+Disable-UAC
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
 
