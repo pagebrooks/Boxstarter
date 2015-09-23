@@ -1,3 +1,4 @@
+Invoke-Reboot
 
 # Windows Configuration
 Update-ExecutionPolicy RemoteSigned
