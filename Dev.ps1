@@ -30,7 +30,6 @@ choco install 7Zip
 choco install NugetPackageExplorer
 choco install console-devel
 choco install greenshot
-choco install paint.net
 choco install fiddler4
 choco install curl
 choco install notepadplusplus.install
