@@ -43,9 +43,9 @@ choco install git.install -y
 choco install poshgit -y
 choco install git-credential-winstore -Version 1.2.0.0 -y
 
-choco install VisualStudio2012Professional -InstallArguments "WebTools" -y
-choco install webpi -y
-choco install resharper -y
+#choco install VisualStudio2012Professional -InstallArguments "WebTools" -y
+#choco install webpi -y
+#choco install resharper -y
 
 choco install javaruntime -y
 choco install golang -y
