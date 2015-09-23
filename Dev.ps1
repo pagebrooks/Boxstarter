@@ -14,12 +14,6 @@ choco install IIS-HttpCompressionDynamic -source windowsfeatures -y
 choco install IIS-ManagementScriptingTools -source windowsfeatures -y
 choco install IIS-WindowsAuthentication -source windowsfeatures -y
 
-choco install javaruntime -y
-choco install golang -y
-
-choco install GoogleChrome -y
-choco install Firefox -y
-
 choco install hipchat -y
 choco install 7Zip -y
 choco install NugetPackageExplorer -y
@@ -37,6 +31,9 @@ choco install windirstat -y
 choco install filezilla -y
 choco install visualstudiocode -y
 choco install stylecop -y
+
+choco install GoogleChrome -y
+choco install Firefox -y
     
 # Without Git, we might as well go home.
 choco install git.install -y
@@ -46,6 +43,9 @@ choco install git-credential-winstore -Version 1.2.0.0 -y
 choco install VisualStudio2013Professional -InstallArguments "WebTools" -y
 choco install webpi -y
 choco install resharper -y
+
+choco install javaruntime -y
+choco install golang -y
 
 # Fix SSH-Agent error by adding the bin directory to the `Path` environment variable
 $env:PSModulePath = $env:PSModulePath + ";C:\Program Files (x86)\Git\bin"
