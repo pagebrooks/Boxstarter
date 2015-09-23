@@ -11,8 +11,8 @@ if(!(Test-Path -Path C:\Projects)){
     md C:\Projects
 }
 
-choco install IIS-WebServerRole -source windowsfeatures -y
 choco install TelnetClient -source windowsFeatures -y
+choco install IIS-WebServerRole -source windowsfeatures -y
 choco install IIS-HttpCompressionDynamic -source windowsfeatures -y
 choco install IIS-ManagementScriptingTools -source windowsfeatures -y
 choco install IIS-WindowsAuthentication -source windowsfeatures -y
