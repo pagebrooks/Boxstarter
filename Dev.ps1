@@ -1,4 +1,4 @@
-Invoke-Reboot
+if (Test-PendingReboot) { Invoke-Reboot }
 
 # Windows Configuration
 Update-ExecutionPolicy RemoteSigned
