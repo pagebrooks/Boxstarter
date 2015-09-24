@@ -1,7 +1,7 @@
 
 # Windows Configuration
 Update-ExecutionPolicy RemoteSigned
-Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar
 Disable-UAC
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
@@ -34,7 +34,6 @@ choco install filezilla -y
 choco install visualstudiocode -y
 choco install stylecop -y
 
-# Without Git, we might as well go home.
 choco install git.install -y
 choco install poshgit -y
 choco install git-credential-winstore -Version 1.2.0.0 -y
