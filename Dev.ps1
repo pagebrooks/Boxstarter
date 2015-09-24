@@ -1,4 +1,5 @@
 
+try {
 # Windows Configuration
 Update-ExecutionPolicy RemoteSigned
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar
@@ -61,3 +62,7 @@ Install-WindowsUpdate -AcceptEula
 choco install Firefox -y
 choco install GoogleChrome -y
 #install-module -ModuleUrl https://github.com/pagebrooks/BoxStarter/raw/master/mount.iso.psm1
+} catch {
+  Write-ChocolateyFailure 'Dev-Boxstarter' $($_.Exception.Message)
+  throw
+}
