@@ -33,6 +33,7 @@ choco install windirstat -y
 choco install filezilla -y
 choco install visualstudiocode -y
 choco install stylecop -y
+choco install paint.net -y
 
 choco install git.install -y
 choco install poshgit -y
