@@ -57,6 +57,8 @@ Install-ChocolateyPinnedTaskBarItem "$env:ProgramFiles(x86)\Notepad++\notepad++.
 Install-ChocolateyFileAssociation ".build" "$env:ProgramFiles(x86)\Notepad++\notepad++.exe"
 Install-ChocolateyFileAssociation ".config" "$env:ProgramFiles(x86)\Notepad++\notepad++.exe"
 
+REG ADD "HKCU\Software\Microsoft\Internet Explorer\Main" /V "Start Page" /D "http://www.google.com/" /F
+
 Install-WindowsUpdate -AcceptEula
 
 choco install Firefox -y
