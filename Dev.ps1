@@ -47,9 +47,6 @@ choco install git-credential-winstore -Version 1.2.0.0 -y
 choco install javaruntime -y
 choco install golang -y
 
-choco install GoogleChrome -y
-choco install Firefox -y
-
 # Fix SSH-Agent error by adding the bin directory to the `Path` environment variable
 $env:PSModulePath = $env:PSModulePath + ";$env:ProgramFiles(x86)\Git\bin"
 
@@ -63,5 +60,6 @@ Install-ChocolateyFileAssociation ".config" "$env:ProgramFiles(x86)\Notepad++\no
 
 Install-WindowsUpdate -AcceptEula
 
-
+choco install Firefox -y
+choco install GoogleChrome -y
 #install-module -ModuleUrl https://github.com/pagebrooks/BoxStarter/raw/master/mount.iso.psm1
