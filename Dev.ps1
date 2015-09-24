@@ -33,8 +33,6 @@ choco install dotpeek -y
 choco install winmerge -y
 choco install windirstat -y
 choco install filezilla -y
-choco install visualstudiocode -y
-choco install stylecop -y
 choco install paint.net -y
 choco install adobereader -y
 
