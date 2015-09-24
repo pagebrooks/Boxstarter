@@ -63,3 +63,6 @@ Install-ChocolateyFileAssociation ".build" "$env:ProgramFiles(x86)\Notepad++\not
 Install-ChocolateyFileAssociation ".config" "$env:ProgramFiles(x86)\Notepad++\notepad++.exe"
 
 Install-WindowsUpdate -AcceptEula
+
+
+#install-module -ModuleUrl https://github.com/pagebrooks/BoxStarter/raw/master/mount.iso.psm1
