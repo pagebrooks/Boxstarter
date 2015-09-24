@@ -3,6 +3,7 @@ try {
 # Windows Configuration
 Update-ExecutionPolicy RemoteSigned
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar
+Disable-MicrosoftUpdate
 Disable-UAC
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
