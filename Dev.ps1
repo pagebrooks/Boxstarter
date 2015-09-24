@@ -6,7 +6,7 @@ Disable-UAC
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
 
-if(!(Test-Path -Path C:\Projects)){
+if(!(Test-Path -Path "$env:SystemDrive\Projects")){
     md C:\Projects
 }
 
