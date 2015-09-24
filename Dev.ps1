@@ -60,11 +60,13 @@ Install-ChocolateyFileAssociation ".config" "$env:ProgramFiles(x86)\Notepad++\no
 
 REG ADD "HKCU\Software\Microsoft\Internet Explorer\Main" /V "Start Page" /D "http://www.google.com/" /F
 
-Install-WindowsUpdate -AcceptEula
-
 choco install Firefox -y
 choco install GoogleChrome -y
 #install-module -ModuleUrl https://github.com/pagebrooks/BoxStarter/raw/master/mount.iso.psm1
+
+Enable-MicrosoftUpdate
+Install-WindowsUpdate -AcceptEula
+
 } catch {
   Write-ChocolateyFailure 'Dev-Boxstarter' $($_.Exception.Message)
   throw
