@@ -16,6 +16,7 @@ choco install IIS-HttpCompressionDynamic -source windowsfeatures -y
 choco install IIS-ManagementScriptingTools -source windowsfeatures -y
 choco install IIS-WindowsAuthentication -source windowsfeatures -y
 
+choco install imdisk -y
 choco install hipchat -y
 choco install 7Zip -y
 choco install NugetPackageExplorer -y
