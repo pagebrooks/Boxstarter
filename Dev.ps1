@@ -28,7 +28,7 @@ choco install IIS-WindowsAuthentication -source windowsfeatures -y
 #choco install greenshot -y
 #choco install fiddler4 -y
 #choco install curl -y
-#choco install notepadplusplus.install -y
+choco install notepadplusplus.install -y
 #choco install gow -y
 #choco install regexpixie -y
 #choco install linqpad -y
