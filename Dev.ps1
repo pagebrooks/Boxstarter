@@ -1,4 +1,4 @@
-$vsIsoPath = 'c:\iso\en_visual_studio_professional_2012_x86_dvd_2262334.iso'
+  $vsIsoPath = 'z:\dev\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.iso'
 
 
   function Mount-DiskImageReturnDriveLetter($imagePath) { 
@@ -13,7 +13,7 @@ $vsIsoPath = 'c:\iso\en_visual_studio_professional_2012_x86_dvd_2262334.iso'
   function Dismount-DiskImage($imagePath) {
       try { 
           $vcdmount = "$($Boxstarter.programFiles86)\Elaborate Bytes\VirtualCloneDrive\vcdmount.exe"
-	      Start-ChocolateyProcessAsAdmin -statements /u -exeToRun $vcdmount
+          Start-ChocolateyProcessAsAdmin -statements /u -exeToRun $vcdmount
           write-host "waiting 10 seconds"
           start-sleep -s 10
       }
