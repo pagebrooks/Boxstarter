@@ -6,7 +6,7 @@
      Start-ChocolateyProcessAsAdmin -statements `"$imagePath`" -exeToRun `"$vcdmount`"
      write-host "waiting 10 seconds"
      start-sleep -s 10
-     return "d"
+     return "e"
   }
 
   function Dismount-DiskImage($imagePath) {
