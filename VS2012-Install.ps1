@@ -3,7 +3,7 @@
   function Mount-DiskImageReturnDriveLetter($imagePath) { 
     Write-Host "mounting iso at: $imagePath"
      $vcdmount = "$($Boxstarter.programFiles86)\Elaborate Bytes\VirtualCloneDrive\vcdmount.exe"
-     Start-ChocolateyProcessAsAdmin -statements `"$imagePath`" -exeToRun `"$vcdmount`"
+     Start-ChocolateyProcessAsAdmin -statements `"0, $imagePath`" -exeToRun `"$vcdmount`"
      write-host "waiting 10 seconds"
      start-sleep -s 10
      return "e"
