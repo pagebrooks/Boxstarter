@@ -21,6 +21,16 @@ $vsIsoPath = 'c:\iso\en_visual_studio_professional_2012_x86_dvd_2262334.iso'
         write-host "unmount of $imagepath failed. continuing."
       }
   }
+  
+ function Reboot-IfRequired() { 
+  if(Test-PendingReboot){ 
+    Write-Host "Test-PendingReboot shows a reboot is required. Rebooting now"
+    Invoke-Reboot
+  }
+  else {
+    Write-Host "No reboot is required. installation continuing"
+  }
+}
 
 
 function Install-VisualStudio2012([string]$vsinstaller) { 
@@ -34,8 +44,6 @@ function Install-VisualStudio2012([string]$vsinstaller) {
       
       $vsargs = "/Passive /NoRestart /AdminFile $vsadminFile /Log $env:temp\vs.log"
       Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsinstaller
-      
-      
       Reboot-IfRequired
     }
     else { 
@@ -73,10 +81,8 @@ choco install VirtualCloneDrive -y
 # Visual Studio Install
 
 try {
-      if (Test-PendingReboot) { Invoke-Reboot }
       $drive = Mount-DiskImageReturnDriveLetter $vsIsoPath
       Install-VisualStudio2012 "${drive}:\vs_professional.exe"
-      if (Test-PendingReboot) { Invoke-Reboot }
 }
 finally {
     Dismount-DiskImage $iso -ErrorAction SilentlyContinue
