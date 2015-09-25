@@ -50,13 +50,13 @@ choco install javaruntime -y
 choco install golang -y
 
 # Fix SSH-Agent error by adding the bin directory to the `Path` environment variable
-$env:PSModulePath = $env:PSModulePath + ";$env:ProgramFiles (x86)\Git\bin"
+$env:PSModulePath = $env:PSModulePath + ";${Env:ProgramFiles(x86)}\Git\bin"
 
 
 Install-ChocolateyPinnedTaskBarItem "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe"
-Install-ChocolateyPinnedTaskBarItem "$env:ProgramFiles (x86)\Notepad++\notepad++.exe"
-Install-ChocolateyFileAssociation ".build" "$env:ProgramFiles (x86)\Notepad++\notepad++.exe"
-Install-ChocolateyFileAssociation ".config" "$env:ProgramFiles (x86)\Notepad++\notepad++.exe"
+Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+Install-ChocolateyFileAssociation ".build" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+Install-ChocolateyFileAssociation ".config" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
 
 REG ADD "HKCU\Software\Microsoft\Internet Explorer\Main" /V "Start Page" /D "http://www.google.com/" /F
 
