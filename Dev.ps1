@@ -1,5 +1,6 @@
 
 try {
+    
 # Windows Configuration
 Update-ExecutionPolicy RemoteSigned
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar
