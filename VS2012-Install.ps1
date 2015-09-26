@@ -1,4 +1,4 @@
-  $vsIsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO'
+  $vsIsoPath = 'C:\Users\Page\Downloads\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO'
 
   function Mount-DiskImageReturnDriveLetter($imagePath) { 
     Write-Host "mounting iso at: $imagePath"
