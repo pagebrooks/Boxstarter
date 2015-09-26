@@ -64,8 +64,9 @@ Enable-RemoteDesktop
 choco install VirtualCloneDrive -y
 
 Reboot-IfRequired
-$vsIsoLocal = "${env:Temp}\VS2012_ISO"
+$vsIsoLocal = "C:\Temp\VS2012_ISO"
 if((Test-Path "${vsIsoLocal}\vs_professional.exe") -eq $false) {
+   md $vsIsoLocal
    $drive = Mount-DiskImageReturnDriveLetter $vsIsoPath
    cpi "${drive}:\" $vsIsoLocal -recurse
    Dismount-DiskImage $vsIso -ErrorAction SilentlyContinue
