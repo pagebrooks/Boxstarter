@@ -68,8 +68,8 @@ $vsIsoLocal = "C:\Temp\VS2012_ISO"
 if((Test-Path "${vsIsoLocal}\vs_professional.exe") -eq $false) {
    md $vsIsoLocal
    $drive = Mount-DiskImageReturnDriveLetter $vsIsoPath
-   cpi "${drive}:\" $vsIsoLocal -recurse
-   Dismount-DiskImage $vsIso -ErrorAction SilentlyContinue
+   cpi "${drive}:\*" -destination $vsIsoLocal -recurse
+   Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
 }
 
 Install-VisualStudio2012 "${vsIsoLocal}\vs_professional.exe"
