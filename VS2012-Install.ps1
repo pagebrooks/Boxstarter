@@ -1,4 +1,4 @@
-  $vsIsoPath = 'C:\Users\Page\Downloads\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO'
+  $vsIsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO'
 
   function Mount-DiskImageReturnDriveLetter($imagePath) { 
     Write-Host "mounting iso at: $imagePath"
@@ -63,10 +63,12 @@ Enable-RemoteDesktop
 
 choco install VirtualCloneDrive -y
 
-try {
-      $drive = Mount-DiskImageReturnDriveLetter $vsIsoPath
-      Install-VisualStudio2012 "${drive}:\vs_professional.exe"
+Reboot-IfRequired
+$vsIsoLocal = "${env:Temp}\VS2012_ISO"
+if((Test-Path "${vsIsoLocal}\vs_professional.exe") -eq $false) {
+   $drive = Mount-DiskImageReturnDriveLetter $vsIsoPath
+   cpi "${drive}:\" $vsIsoLocal -recurse
+   Dismount-DiskImage $vsIso -ErrorAction SilentlyContinue
 }
-finally {
-    Dismount-DiskImage $iso -ErrorAction SilentlyContinue
-}
+
+Install-VisualStudio2012 "${vsIsoLocal}\vs_professional.exe"
