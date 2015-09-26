@@ -13,7 +13,8 @@
   function Dismount-DiskImage($imagePath) {
       try { 
           $vcdmount = "$($Boxstarter.programFiles86)\Elaborate Bytes\VirtualCloneDrive\vcdmount.exe"
-          Start-ChocolateyProcessAsAdmin -statements /u -exeToRun $vcdmount
+          $args = "/u"
+          Start-ChocolateyProcessAsAdmin -statements $args -exeToRun $vcdmount
           write-host "waiting 10 seconds"
           start-sleep -s 10
       }
