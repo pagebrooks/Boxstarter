@@ -64,9 +64,7 @@ Enable-RemoteDesktop
 choco install VirtualCloneDrive -y
 
 try {
-      $dest = "C:\Users\Page\Download\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO"
-      cp $vsIsoPath $dest
-      $drive = Mount-DiskImageReturnDriveLetter $dest
+      $drive = Mount-DiskImageReturnDriveLetter $vsIsoPath
       Install-VisualStudio2012 "${drive}:\vs_professional.exe"
 }
 finally {
