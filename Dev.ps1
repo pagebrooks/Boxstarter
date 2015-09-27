@@ -114,10 +114,6 @@ function Install-Office2013() {
 }
 
 try {
-	
-	$Boxstarter.BoxstarterUser = $env:UserName
-	Write-Host "User: ${Boxstarter.BoxstarterUser}"
-
 	# Windows Configuration
 	Update-ExecutionPolicy RemoteSigned
 	Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar
@@ -126,6 +122,9 @@ try {
 	Disable-InternetExplorerESC
 	Enable-RemoteDesktop
 
+	$Boxstarter.BoxstarterUser = $env:UserName
+	Write-Host "User: ${Boxstarter.BoxstarterUser}"
+	
 	choco install VirtualCloneDrive -y
 	Install-Sql2014
 	Install-Office2013
