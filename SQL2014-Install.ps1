@@ -47,7 +47,7 @@ function Install-Sql2014() {
 		Write-Host "Installing SQL Server 2014 as it is not already on path $sqlPath"
 		$installer = "${drive}:\setup.exe"
 		$user = $Boxstarter.BoxstarterUser
-		$vsargs = "/ConfigurationFile=$sql2014AdminFile /SQLSYSADMINACCOUNTS=`"${env:ComputerName}\${env:UserName}`"" 
+		$vsargs = "/ConfigurationFile=$sql2014AdminFile /SQLSYSADMINACCOUNTS=`"${env:ComputerName}\${user}`"" 
 		Write-Host "Args: $vsargs"
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $installer
 		Dismount-DiskImage $sql2014IsoPath -ErrorAction SilentlyContinue
@@ -62,9 +62,7 @@ Disable-UAC
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
 
-
+$Boxstarter.BoxstarterUser = $env:UserName
 Write-Host $Boxstarter.BoxstarterUser
-#choco install VirtualCloneDrive -y
-
-
-#Install-Sql2014
+choco install VirtualCloneDrive -y
+Install-Sql2014
