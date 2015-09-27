@@ -1,5 +1,5 @@
 $sql2014IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD9_SQL_Svr_Developer_Edtn_2014_64Bit_English_MLF_X19-34421.ISO'
-$sql2014configFile = "https://raw.github.com/pagebrooks/Boxstarter/master/SQL2014-Config.xml"
+$sql2014configFile = "https://raw.github.com/pagebrooks/Boxstarter/master/SQL2014-Config.ini"
 
 function Mount-DiskImageReturnDriveLetter($imagePath) { 
 	Write-Host "mounting iso at: $imagePath"
