@@ -65,7 +65,7 @@ Enable-RemoteDesktop
 choco install VirtualCloneDrive -y
 
 Reboot-IfRequired
-$vsIsoLocal = "C:\Temp\VS2012_ISO"
+$vsIsoLocal = "$env:Temp\VS2012_ISO"
 if((Test-Path "${vsIsoLocal}\vs_professional.exe") -eq $false) {
    $drive = Mount-DiskImageReturnDriveLetter $vsIsoPath
    Write-Host "Copying ISO files to local folder: $vsIsoLocal"
