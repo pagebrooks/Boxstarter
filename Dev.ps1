@@ -65,6 +65,26 @@ function Install-VisualStudio2012() {
     }
 }
 
+function Install-Office2013() { 
+    $officePath = "$($Boxstarter.programFiles86)\Microsoft Office\Office15\WINWORD.exe"
+    if((Test-Path $officePath) -eq $false) {   
+      
+      $drive = Mount-DiskImageReturnDriveLetter $office2013IsoPath
+      Write-Host "Downloading Office2013-Config.xml"
+      $officeAdminFile = "$env:temp\Office2013-Config.xml"
+      $client = New-Object System.Net.WebClient;
+      $client.DownloadFile($office2013ConfigFile, $officeAdminFile);
+      
+      Write-Host "Installing Office 2013 as it is not already on path $officePath"
+      $vsInstaller = "${drive}:\setup.exe"
+      $vsargs = "/Config $officeAdminFile"
+      Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsInstaller
+      Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
+      Reboot-IfRequired
+    } else { 
+      Write-Host "Office 2013 already installed as WINWORD.exe found on path $officePath"
+    }
+}
 
 try {
     
@@ -77,6 +97,7 @@ Disable-InternetExplorerESC
 Enable-RemoteDesktop
 
 choco install VirtualCloneDrive -y
+Install-Office2013
 Install-VisualStudio2012
 
 choco install psget -y
