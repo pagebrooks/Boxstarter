@@ -78,19 +78,15 @@ Enable-RemoteDesktop
 
 choco install VirtualCloneDrive -y
 Install-VisualStudio2012
-choco install webpi -y
-choco install resharper -y
 
 choco install psget -y
 choco install hipchat -y
 choco install 7Zip -y
-choco install NugetPackageExplorer -y
 choco install conemu -y
 choco install greenshot -y
 choco install fiddler4 -y
 choco install curl -y
 choco install notepadplusplus.install -y
-choco install gow -y
 choco install regexpixie -y
 choco install linqpad -y
 choco install dotpeek -y
