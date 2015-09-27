@@ -114,6 +114,11 @@ function Install-Office2013() {
 }
 
 try {
+	
+	$Boxstarter.BoxstarterUser = $env:UserName
+	$Boxstarter.BoxstarterUserDomain = $env:UserDomain
+	Write-Host "User: ${Boxstarter.BoxstarterUser}"
+	Write-Host "Domain: ${Boxstarter.BoxstarterUserDomain}"
 
 	# Windows Configuration
 	Update-ExecutionPolicy RemoteSigned
