@@ -1,5 +1,7 @@
   $vs2012IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO'
   $vs2012AdminDeploymentFile = "https://raw.github.com/pagebrooks/Boxstarter/master/VS2012-AdminDeployment.xml"
+  $office2013IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Office_Professional_Plus_2013_W32_English_MLF_X18-55138.ISO'
+  $office2013ConfigFile = "https://raw.github.com/pagebrooks/Boxstarter/master/Office2013-Config.xml"
   
   function Mount-DiskImageReturnDriveLetter($imagePath) { 
     Write-Host "mounting iso at: $imagePath"
