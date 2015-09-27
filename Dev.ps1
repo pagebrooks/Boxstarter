@@ -134,6 +134,7 @@ try {
 	Install-VisualStudio2012
 	
 	choco install resharper -version 8.2.3000.5176 -y
+	choco install webpicmd -y
 	choco install hipchat -y
 	choco install 7Zip -y
 	choco install conemu -y
