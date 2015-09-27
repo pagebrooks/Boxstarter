@@ -117,6 +117,7 @@ try {
 	
 	$Boxstarter.BoxstarterUser = $env:UserName
 	$Boxstarter.BoxstarterUserDomain = $env:UserDomain
+	Write-Host $env:UserName
 	Write-Host "User: ${Boxstarter.BoxstarterUser}\${Boxstarter.BoxstarterUserDomain}"
 
 	# Windows Configuration
