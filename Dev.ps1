@@ -121,8 +121,8 @@ choco install IIS-HttpCompressionDynamic -source windowsfeatures -y
 choco install IIS-ManagementScriptingTools -source windowsfeatures -y
 choco install IIS-WindowsAuthentication -source windowsfeatures -y
 
-#Enable-MicrosoftUpdate
-#Install-WindowsUpdate -AcceptEula
+Enable-MicrosoftUpdate
+Install-WindowsUpdate -AcceptEula
 
 } catch {
   Write-ChocolateyFailure 'Dev-Boxstarter' $($_.Exception.Message)
