@@ -129,6 +129,7 @@ try {
 	Enable-RemoteDesktop
 
 	choco install VirtualCloneDrive -y
+	Install-Sql2014
 	Install-Office2013
 	Install-VisualStudio2012
 
