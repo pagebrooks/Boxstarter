@@ -46,6 +46,7 @@ function Install-Sql2014() {
 		$client.DownloadFile($sql2014ConfigFile, $sql2014AdminFile);
 		Write-Host "Installing SQL Server 2014 as it is not already on path $sqlPath"
 		$installer = "${drive}:\setup.exe"
+		$user = $Boxstarter.BoxstarterUser
 		$vsargs = "/ConfigurationFile=$sql2014AdminFile /SQLSYSADMINACCOUNTS=`"${env:ComputerName}\${env:UserName}`"" 
 		Write-Host "Args: $vsargs"
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $installer
@@ -61,6 +62,9 @@ Disable-UAC
 Disable-InternetExplorerESC
 Enable-RemoteDesktop
 
-choco install VirtualCloneDrive -y
 
-Install-Sql2014
+Write-Host $Boxstarter.BoxstarterUser
+#choco install VirtualCloneDrive -y
+
+
+#Install-Sql2014
