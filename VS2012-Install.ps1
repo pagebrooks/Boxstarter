@@ -46,16 +46,13 @@ function Install-VisualStudio2012() {
       $client = New-Object System.Net.WebClient;
       $client.DownloadFile($vs2012AdminDeploymentFile, $vsAdminFile);
       
-
       Write-Host "Installing VS2012 as it is not already on path $devenvPath"
       $vsInstaller = "${drive}:\vs_professional.exe"
       $vsargs = "/Passive /NoRestart /AdminFile $vsadminFile /Log $env:temp\vs.log"
       Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsInstaller
       Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
-      
       Reboot-IfRequired
-    }
-    else { 
+    } else { 
       Write-Host "VS2012 already installed as devenv.exe found on path $devenvPath"
     }
 
@@ -63,6 +60,8 @@ function Install-VisualStudio2012() {
       $vsUpdate4Path = 'http://download.microsoft.com/download/D/4/8/D48D1AC2-A297-4C9E-A9D0-A218E6609F06/VSU4/VS2012.4.exe'
       Install-ChocolateyPackage 'VS2012 Update 4' 'exe' '/passive /norestart' $vsUpdate4Path
       Reboot-IfRequired
+    } else {
+      Write-Host "VS2012 Update 4 already installed, skipping"
     }
 }
 
@@ -74,6 +73,3 @@ Enable-RemoteDesktop
 choco install VirtualCloneDrive -y
 
 Install-VisualStudio2012
-
-
-
