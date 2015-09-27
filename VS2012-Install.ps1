@@ -35,7 +35,7 @@
 }
 
 function Install-VisualStudio2012([string]$vsinstaller) { 
-    $vsadminFile = "C:\Temp\admindeployment.xml"
+    $vsadminFile = "$env:temp\admindeployment.xml"
     $client = New-Object System.Net.WebClient;
     $client.DownloadFile("https://raw.github.com/pagebrooks/Boxstarter/master/VS2012-AdminDeployment.xml", $vsadminFile);
     
