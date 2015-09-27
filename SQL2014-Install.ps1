@@ -36,7 +36,7 @@ function Reboot-IfRequired() {
 }
 
 function Install-Sql2014() { 
-	$sqlPath = "$($Boxstarter.programFiles)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Binn\sqlservr.exe"
+	$sqlPath = "${Env:ProgramFiles}\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Binn\sqlservr.exe"
 	if((Test-Path $sqlPath) -eq $false) {   
 
 		$drive = Mount-DiskImageReturnDriveLetter $sql2014IsoPath
