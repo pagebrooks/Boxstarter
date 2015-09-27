@@ -1,5 +1,6 @@
   $vsIsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO'
-
+  $vs2012AdminDeploymentFile = "https://raw.github.com/pagebrooks/Boxstarter/master/VS2012-AdminDeployment.xml"
+  
   function Mount-DiskImageReturnDriveLetter($imagePath) { 
     Write-Host "mounting iso at: $imagePath"
      $vcdmount = "$($Boxstarter.programFiles86)\Elaborate Bytes\VirtualCloneDrive\vcdmount.exe"
@@ -35,13 +36,13 @@
 }
 
 function Install-VisualStudio2012([string]$vsinstaller) { 
-    $vsadminFile = "$env:temp\admindeployment.xml"
+    $vsAdminFile = "$env:temp\VS2012-AdminDeployment.xml"
     $client = New-Object System.Net.WebClient;
-    $client.DownloadFile("https://raw.github.com/pagebrooks/Boxstarter/master/VS2012-AdminDeployment.xml", $vsadminFile);
+    $client.DownloadFile($vs2012AdminDeploymentFile, $vsAdminFile);
     
     $devenvPath = "$($Boxstarter.programFiles86)\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
     if((Test-Path $devenvPath) -eq $false) {
-      Write-Host "Installing Visual Studio 2012 as it is not already on path $devenvPath"
+      Write-Host "Installing VS2012 as it is not already on path $devenvPath"
       
       $vsargs = "/Passive /NoRestart /AdminFile $vsadminFile /Log $env:temp\vs.log"
       Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsinstaller
