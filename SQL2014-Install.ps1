@@ -41,12 +41,12 @@ function Install-Sql2014() {
 
 		$drive = Mount-DiskImageReturnDriveLetter $sql2014IsoPath
 		Write-Host "Downloading Sql2014-Config.ini"
-		$sqlAdminFile = "$env:temp\Sql2014-Config.ini"
+		$sql2014AdminFile = "$env:temp\Sql2014-Config.ini"
 		$client = New-Object System.Net.WebClient;
 		$client.DownloadFile($sql2014ConfigFile, $sql2014AdminFile);
 		Write-Host "Installing SQL Server 2014 as it is not already on path $sqlPath"
 		$installer = "${drive}:\setup.exe"
-		$vsargs = "/ConfigurationFile=$sqlAdminFile" 
+		$vsargs = "/ConfigurationFile=$sql2014AdminFile" 
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $installer
 		Dismount-DiskImage $sql2014IsoPath -ErrorAction SilentlyContinue
 		Reboot-IfRequired
