@@ -36,6 +36,7 @@
 }
 
 function Install-VisualStudio2012([string]$vsinstaller) { 
+    Write-Host "Downloading VS2012-AdminDeployment.xml"
     $vsAdminFile = "$env:temp\VS2012-AdminDeployment.xml"
     $client = New-Object System.Net.WebClient;
     $client.DownloadFile($vs2012AdminDeploymentFile, $vsAdminFile);
@@ -53,7 +54,8 @@ function Install-VisualStudio2012([string]$vsinstaller) {
     }
 
     if((Get-Item "$($Boxstarter.programFiles86)\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe").VersionInfo.ProductVersion -lt "11.0.60115.1") {
-      Install-ChocolateyPackage 'vs update 4' 'exe' '/passive /norestart' 'http://download.microsoft.com/download/D/4/8/D48D1AC2-A297-4C9E-A9D0-A218E6609F06/VSU4/VS2012.4.exe'
+      $vsUpdate4Path = 'http://download.microsoft.com/download/D/4/8/D48D1AC2-A297-4C9E-A9D0-A218E6609F06/VSU4/VS2012.4.exe'
+      Install-ChocolateyPackage 'VS2012 Update 4' 'exe' '/passive /norestart' $vsUpdate4Path
       Reboot-IfRequired
     }
 }
