@@ -46,7 +46,7 @@ function Install-Sql2014() {
 		$client.DownloadFile($sql2014ConfigFile, $sql2014AdminFile);
 		Write-Host "Installing SQL Server 2014 as it is not already on path $sqlPath"
 		$installer = "${drive}:\setup.exe"
-		$vsargs = "/ConfigurationFile=$sql2014AdminFile" 
+		$vsargs = "/ConfigurationFile=$sql2014AdminFile /SQLSYSADMINACCOUNTS=`"${env:COMPUTERNAME}\Administrators`"" 
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $installer
 		Dismount-DiskImage $sql2014IsoPath -ErrorAction SilentlyContinue
 		Reboot-IfRequired
