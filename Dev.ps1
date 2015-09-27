@@ -106,10 +106,10 @@ choco install golang -y
 # Fix SSH-Agent error by adding the bin directory to the `Path` environment variable
 $env:PSModulePath = $env:PSModulePath + ";${Env:ProgramFiles(x86)}\Git\bin"
 
-#Install-ChocolateyPinnedTaskBarItem "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe"  
-#Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
-#Install-ChocolateyFileAssociation ".build" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
-#Install-ChocolateyFileAssociation ".config" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+Install-ChocolateyPinnedTaskBarItem "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe"  
+Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+Install-ChocolateyFileAssociation ".build" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+Install-ChocolateyFileAssociation ".config" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
 
 choco install Firefox -y
 choco install GoogleChrome -y
