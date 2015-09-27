@@ -5,8 +5,8 @@
      $vcdmount = "$($Boxstarter.programFiles86)\Elaborate Bytes\VirtualCloneDrive\vcdmount.exe"
      $args = "`"$imagePath`""
      Start-ChocolateyProcessAsAdmin -statements $args -exeToRun `"$vcdmount`"
-     write-host "waiting 20 seconds"
-     start-sleep -s 20
+     write-host "waiting 10 seconds"
+     start-sleep -s 10
      return "E"
   }
 
