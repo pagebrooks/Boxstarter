@@ -35,18 +35,24 @@
   }
 }
 
-function Install-VisualStudio2012([string]$vsinstaller) { 
-    Write-Host "Downloading VS2012-AdminDeployment.xml"
-    $vsAdminFile = "$env:temp\VS2012-AdminDeployment.xml"
-    $client = New-Object System.Net.WebClient;
-    $client.DownloadFile($vs2012AdminDeploymentFile, $vsAdminFile);
-    
+function Install-VisualStudio2012() { 
+  
     $devenvPath = "$($Boxstarter.programFiles86)\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
-    if((Test-Path $devenvPath) -eq $false) {
-      Write-Host "Installing VS2012 as it is not already on path $devenvPath"
+    if((Test-Path $devenvPath) -eq $false) {   
       
+      $drive = Mount-DiskImageReturnDriveLetter $vs2012IsoPath
+      Write-Host "Downloading VS2012-AdminDeployment.xml"
+      $vsAdminFile = "$env:temp\VS2012-AdminDeployment.xml"
+      $client = New-Object System.Net.WebClient;
+      $client.DownloadFile($vs2012AdminDeploymentFile, $vsAdminFile);
+      
+
+      Write-Host "Installing VS2012 as it is not already on path $devenvPath"
+      $vsInstaller = "${drive}:\vs_professional.exe"
       $vsargs = "/Passive /NoRestart /AdminFile $vsadminFile /Log $env:temp\vs.log"
-      Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsinstaller
+      Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsInstaller
+      Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
+      
       Reboot-IfRequired
     }
     else { 
@@ -67,10 +73,7 @@ Enable-RemoteDesktop
 
 choco install VirtualCloneDrive -y
 
-if((Test-Path "${vsIsoLocal}\vs_professional.exe") -eq $false) {
-   $drive = Mount-DiskImageReturnDriveLetter $vs2012IsoPath
-   Install-VisualStudio2012 "${drive}:\vs_professional.exe"
-   Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
-}
+Install-VisualStudio2012
+
 
 
