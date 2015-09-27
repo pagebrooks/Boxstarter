@@ -50,7 +50,7 @@ function Install-Sql2014() {
 		$client.DownloadFile($sql2014ConfigFile, $sql2014AdminFile);
 		Write-Host "Installing SQL Server 2014 as it is not already on path $sqlPath"
 		$installer = "${drive}:\setup.exe"
-		$user = "${Boxstarter.BoxstarterUser}\${BoxstarterUserDomain}""
+		$user = "${Boxstarter.BoxstarterUser}\${BoxstarterUserDomain}"
 		$vsargs = "/ConfigurationFile=$sql2014AdminFile /SQLSYSADMINACCOUNTS=`"${user}`"" 
 		Write-Host "Args: $vsargs"
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $installer
