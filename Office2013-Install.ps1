@@ -36,9 +36,8 @@
 }
 
 function Install-Office2013() { 
-  
-    $devenvPath = "$($Boxstarter.programFiles86)\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
-    if((Test-Path $devenvPath) -eq $false) {   
+    $officePath = "$($Boxstarter.programFiles86)\Microsoft Office\Office15\WINWORD.exe"
+    if((Test-Path $officePath) -eq $false) {   
       
       $drive = Mount-DiskImageReturnDriveLetter $office2013IsoPath
       Write-Host "Downloading Office2013-Config.xml"
@@ -46,14 +45,14 @@ function Install-Office2013() {
       $client = New-Object System.Net.WebClient;
       $client.DownloadFile($office2013ConfigFile, $officeAdminFile);
       
-      Write-Host "Installing Office 2013 as it is not already on path $devenvPath"
-      $vsInstaller = "${drive}:\vs_professional.exe"
-      $vsargs = "/Passive /NoRestart /AdminFile $vsadminFile /Log $env:temp\vs.log"
+      Write-Host "Installing Office 2013 as it is not already on path $officePath"
+      $vsInstaller = "${drive}:\setup.exe"
+      $vsargs = "/Config $officeAdminFile"
       Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsInstaller
       Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
       Reboot-IfRequired
     } else { 
-      Write-Host "VS2012 already installed as devenv.exe found on path $devenvPath"
+      Write-Host "Office 2013 already installed as WINWORD.exe found on path $officePath"
     }
 }
 
