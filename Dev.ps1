@@ -39,6 +39,29 @@ function Reboot-IfRequired() {
 	}
 }
 
+function Install-Sql2014() { 
+	$sqlPath = "${Env:ProgramFiles}\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Binn\sqlservr.exe"
+	if((Test-Path $sqlPath) -eq $false) {   
+
+		$drive = Mount-DiskImageReturnDriveLetter $sql2014IsoPath
+		Write-Host "Downloading Sql2014-Config.ini"
+		$sql2014AdminFile = "$env:temp\Sql2014-Config.ini"
+		$client = New-Object System.Net.WebClient;
+		$client.DownloadFile($sql2014ConfigFile, $sql2014AdminFile);
+		Write-Host "Installing SQL Server 2014 as it is not already on path $sqlPath"
+		$installer = "${drive}:\setup.exe"
+		$user = "${Boxstarter.BoxstarterUser}\${BoxstarterUserDomain}""
+		$vsargs = "/ConfigurationFile=$sql2014AdminFile /SQLSYSADMINACCOUNTS=`"${user}`"" 
+		Write-Host "Args: $vsargs"
+		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $installer
+		Dismount-DiskImage $sql2014IsoPath -ErrorAction SilentlyContinue
+		Reboot-IfRequired
+	} else { 
+		Write-Host "SQL Server 2014 already installed as sqlservr.exe found on path $sqlPath"
+	}
+}
+
+
 function Install-VisualStudio2012() { 
 
 	$devenvPath = "$($Boxstarter.programFiles86)\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
