@@ -133,7 +133,6 @@ try {
 	Install-Office2013
 	Install-VisualStudio2012
 
-	choco install psget -y
 	choco install hipchat -y
 	choco install 7Zip -y
 	choco install conemu -y
@@ -162,6 +161,8 @@ try {
 
 	Install-ChocolateyPinnedTaskBarItem "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe"  
 	Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+	Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\Ssms.exe"
+	Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
 	Install-ChocolateyFileAssociation ".build" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
 	Install-ChocolateyFileAssociation ".config" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
 
