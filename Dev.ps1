@@ -123,7 +123,8 @@ try {
 	Enable-RemoteDesktop
 
 	$Boxstarter.BoxstarterUser = $env:UserName
-	Write-Host "User: ${Boxstarter.BoxstarterUser}"
+	Write-Host $Boxstarter.BoxstarterUser
+	Write-Host $env:UserDomain
 	
 	choco install VirtualCloneDrive -y
 	Install-Sql2014
