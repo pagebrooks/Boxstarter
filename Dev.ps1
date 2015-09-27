@@ -5,6 +5,9 @@ $office2013ConfigFile = "https://raw.github.com/pagebrooks/Boxstarter/master/Off
 $sql2014IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD9_SQL_Svr_Developer_Edtn_2014_64Bit_English_MLF_X19-34421.ISO'
 $sql2014configFile = "https://raw.github.com/pagebrooks/Boxstarter/master/SQL2014-Config.ini"
 
+$userName = $env:UserName
+$userDomain = $env:UserDomain
+
 function Mount-DiskImageReturnDriveLetter($imagePath) { 
 	Write-Host "mounting iso at: $imagePath"
 	$vcdmount = "$($Boxstarter.programFiles86)\Elaborate Bytes\VirtualCloneDrive\vcdmount.exe"
@@ -50,7 +53,7 @@ function Install-Sql2014() {
 		$client.DownloadFile($sql2014ConfigFile, $sql2014AdminFile);
 		Write-Host "Installing SQL Server 2014 as it is not already on path $sqlPath"
 		$installer = "${drive}:\setup.exe"
-		$user = "${Boxstarter.BoxstarterUser}\${env:UserDomain}"
+		$user = "${userDomain}\${userName}"
 		$vsargs = "/ConfigurationFile=$sql2014AdminFile /SQLSYSADMINACCOUNTS=`"${user}`""
 		Write-Host "Args: $vsargs"
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $installer
@@ -122,9 +125,8 @@ try {
 	Disable-InternetExplorerESC
 	Enable-RemoteDesktop
 
-	$Boxstarter.BoxstarterUser = $env:UserName
-	Write-Host $Boxstarter.BoxstarterUser
-	Write-Host $env:UserDomain
+	Write-Host $userName
+	Write-Host $userDomain
 	
 	choco install VirtualCloneDrive -y
 	Install-Sql2014
