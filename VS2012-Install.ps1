@@ -5,13 +5,14 @@
      $vcdmount = "$($Boxstarter.programFiles86)\Elaborate Bytes\VirtualCloneDrive\vcdmount.exe"
      $args = "`"$imagePath`""
      Start-ChocolateyProcessAsAdmin -statements $args -exeToRun `"$vcdmount`"
-     write-host "waiting 10 seconds"
-     start-sleep -s 10
+     write-host "waiting 20 seconds"
+     start-sleep -s 20
      return "E"
   }
 
   function Dismount-DiskImage($imagePath) {
       try { 
+          Write-Host "dismounting iso: $imagePath"
           $vcdmount = "$($Boxstarter.programFiles86)\Elaborate Bytes\VirtualCloneDrive\vcdmount.exe"
           $args = "/u"
           Start-ChocolateyProcessAsAdmin -statements $args -exeToRun $vcdmount
@@ -66,8 +67,9 @@ choco install VirtualCloneDrive -y
 Reboot-IfRequired
 $vsIsoLocal = "C:\Temp\VS2012_ISO"
 if((Test-Path "${vsIsoLocal}\vs_professional.exe") -eq $false) {
-   md $vsIsoLocal
    $drive = Mount-DiskImageReturnDriveLetter $vsIsoPath
+   Write-Host "Copying ISO files to local folder: $vsIsoLocal"
+   md $vsIsoLocal
    cpi "${drive}:\*" -destination $vsIsoLocal -recurse
    Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
 }
