@@ -1,3 +1,4 @@
+# This script is for Windows 7 (x64) SP1.
 # Update these paths for your own usage.
 # Important: Be sure to use UNC paths since the installer runs under a different context
 # and may not be able to see mapped drives.
