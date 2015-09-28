@@ -1,3 +1,7 @@
+# Update these paths for your own usage.
+# Important: Be sure to use the UNC convention since the installer runs under a different context
+# and may not be able to see mapped drives.
+
 $vs2012IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO'
 $vs2012AdminDeploymentFile = "https://raw.github.com/pagebrooks/Boxstarter/master/VS2012-AdminDeployment.xml"
 $office2013IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Office_Professional_Plus_2013_W32_English_MLF_X18-55138.ISO'
