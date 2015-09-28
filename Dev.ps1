@@ -172,11 +172,11 @@ try {
 	Write-Host $userDomain
 	
 	choco install VirtualCloneDrive -y
-	Install-Sql2014
-	Install-Office2013
+	#Install-Sql2014
+	#Install-Office2013
 	Install-VisualStudio2012
-	Install-DevTools
-	Install-Browsers
+	#Install-DevTools
+	#Install-Browsers
 
 	choco install TelnetClient -source windowsFeatures -y
 	choco install IIS-WebServerRole -source windowsfeatures -y
