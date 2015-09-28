@@ -80,7 +80,7 @@ function Install-VisualStudio2012() {
 		$vsInstaller = "${drive}:\vs_professional.exe"
 		$vsargs = "/Passive /NoRestart /AdminFile $vsadminFile /Log $env:temp\vs.log"
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsInstaller
-		Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
+		Dismount-DiskImage $vs2012IsoPath -ErrorAction SilentlyContinue
 		Reboot-IfRequired
 	} else { 
 		Write-Host "VS2012 already installed as devenv.exe found on path $devenvPath"
@@ -109,7 +109,7 @@ function Install-Office2013() {
 		$vsInstaller = "${drive}:\setup.exe"
 		$vsargs = "/Config $officeAdminFile"
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsInstaller
-		Dismount-DiskImage $vsIsoPath -ErrorAction SilentlyContinue
+		Dismount-DiskImage $office2013IsoPath -ErrorAction SilentlyContinue
 		Reboot-IfRequired
 	} else { 
 		Write-Host "Office 2013 already installed as WINWORD.exe found on path $officePath"
