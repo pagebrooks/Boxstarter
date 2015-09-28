@@ -116,7 +116,7 @@ function Install-Office2013() {
 	}
 }
 
-function Install-Dev-Tools() { 
+function Install-DevTools() { 
 	choco install resharper -version 8.2.3000.5176 -y
 	choco install webpicmd -y
 	choco install hipchat -y
@@ -175,7 +175,7 @@ try {
 	Install-Sql2014
 	Install-Office2013
 	Install-VisualStudio2012
-	Install-Dev-Tools
+	Install-DevTools
 	Install-Browsers
 
 	choco install TelnetClient -source windowsFeatures -y
