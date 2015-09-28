@@ -58,6 +58,7 @@ function Install-Sql2014() {
 		Write-Host "Args: $vsargs"
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $installer
 		Dismount-DiskImage $sql2014IsoPath -ErrorAction SilentlyContinue
+		Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\Ssms.exe"
 		Reboot-IfRequired
 	} else { 
 		Write-Host "SQL Server 2014 already installed as sqlservr.exe found on path $sqlPath"
@@ -81,6 +82,7 @@ function Install-VisualStudio2012() {
 		$vsargs = "/Passive /NoRestart /AdminFile $vsadminFile /Log $env:temp\vs.log"
 		Start-ChocolateyProcessAsAdmin -statements $vsargs -exeToRun $vsInstaller
 		Dismount-DiskImage $vs2012IsoPath -ErrorAction SilentlyContinue
+		Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
 		Reboot-IfRequired
 	} else { 
 		Write-Host "VS2012 already installed as devenv.exe found on path $devenvPath"
@@ -93,6 +95,8 @@ function Install-VisualStudio2012() {
 	} else {
 		Write-Host "VS2012 Update 4 already installed, skipping"
 	}
+	
+	choco install resharper -version 8.2.3000.5176 -y
 }
 
 function Install-Office2013() { 
@@ -117,7 +121,12 @@ function Install-Office2013() {
 }
 
 function Install-DevTools() { 
-	choco install resharper -version 8.2.3000.5176 -y
+	
+	choco install notepadplusplus.install -y
+	Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+	Install-ChocolateyFileAssociation ".build" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+	Install-ChocolateyFileAssociation ".config" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"	
+
 	choco install webpicmd -y
 	choco install hipchat -y
 	choco install 7Zip -y
@@ -125,7 +134,7 @@ function Install-DevTools() {
 	choco install greenshot -y
 	choco install fiddler4 -y
 	choco install curl -y
-	choco install notepadplusplus.install -y
+	
 	choco install regexpixie -y
 	choco install linqpad -y
 	choco install dotpeek -y
@@ -146,11 +155,6 @@ function Install-DevTools() {
 	$env:PSModulePath = $env:PSModulePath + ";${Env:ProgramFiles(x86)}\Git\bin"
 
 	Install-ChocolateyPinnedTaskBarItem "$env:SystemRoot\system32\WindowsPowerShell\v1.0\powershell.exe"  
-	Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
-	Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\Ssms.exe"
-	Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
-	Install-ChocolateyFileAssociation ".build" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
-	Install-ChocolateyFileAssociation ".config" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
 }
 
 function Install-Browsers() {
