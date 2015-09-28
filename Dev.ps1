@@ -65,7 +65,6 @@ function Install-Sql2014() {
 	}
 }
 
-
 function Install-VisualStudio2012() { 
 
 	$devenvPath = "$($Boxstarter.programFiles86)\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
