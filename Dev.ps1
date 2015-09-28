@@ -5,6 +5,7 @@ $office2013ConfigFile = "https://raw.github.com/pagebrooks/Boxstarter/master/Off
 $sql2014IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD9_SQL_Svr_Developer_Edtn_2014_64Bit_English_MLF_X19-34421.ISO'
 $sql2014configFile = "https://raw.github.com/pagebrooks/Boxstarter/master/SQL2014-Config.ini"
 
+# Necessary for SQL Server install since installer runs as SYSTEM
 $userName = $env:UserName
 $userDomain = $env:UserDomain
 
@@ -174,6 +175,7 @@ try {
 	Write-Host $userName
 	Write-Host $userDomain
 	
+	# Install Virtual Clone Drive first so we can mount ISOs
 	choco install VirtualCloneDrive -y
 	#Install-Sql2014
 	#Install-Office2013
@@ -187,6 +189,7 @@ try {
 	choco install IIS-ManagementScriptingTools -source windowsfeatures -y
 	choco install IIS-WindowsAuthentication -source windowsfeatures -y
 
+	# Warning: this part takes a long time to complete!
 	#Enable-MicrosoftUpdate
 	#Install-WindowsUpdate -AcceptEula
 
