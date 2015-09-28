@@ -3,11 +3,14 @@
 # Important: Be sure to use UNC paths since the installer runs under a different context
 # and may not be able to see mapped drives.
 
+# ISO Paths
 $vs2012IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Visual_Studio_Pro_2012_English_Core_MLF_X18-35900.ISO'
-$vs2012AdminDeploymentFile = "https://raw.github.com/pagebrooks/Boxstarter/master/VS2012-AdminDeployment.xml"
 $office2013IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD5_Office_Professional_Plus_2013_W32_English_MLF_X18-55138.ISO'
-$office2013ConfigFile = "https://raw.github.com/pagebrooks/Boxstarter/master/Office2013-Config.xml"
 $sql2014IsoPath = '\\vmware-host\Shared Folders\DEV\SW_DVD9_SQL_Svr_Developer_Edtn_2014_64Bit_English_MLF_X19-34421.ISO'
+
+# Unattended Install Config Files
+$vs2012AdminDeploymentFile = "https://raw.github.com/pagebrooks/Boxstarter/master/VS2012-AdminDeployment.xml"
+$office2013ConfigFile = "https://raw.github.com/pagebrooks/Boxstarter/master/Office2013-Config.xml"
 $sql2014configFile = "https://raw.github.com/pagebrooks/Boxstarter/master/SQL2014-Config.ini"
 
 # Necessary for SQL Server install since installer runs as SYSTEM
