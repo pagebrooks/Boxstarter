@@ -116,23 +116,7 @@ function Install-Office2013() {
 	}
 }
 
-try {
-	# Windows Configuration
-	Update-ExecutionPolicy RemoteSigned
-	Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar
-	Disable-MicrosoftUpdate
-	Disable-UAC
-	Disable-InternetExplorerESC
-	Enable-RemoteDesktop
-
-	Write-Host $userName
-	Write-Host $userDomain
-	
-	choco install VirtualCloneDrive -y
-	Install-Sql2014
-	Install-Office2013
-	Install-VisualStudio2012
-	
+function Install-Dev-Tools() { 
 	choco install resharper -version 8.2.3000.5176 -y
 	choco install webpicmd -y
 	choco install hipchat -y
@@ -157,7 +141,7 @@ try {
 
 	choco install javaruntime -y
 	choco install golang -y
-
+	
 	# Fix SSH-Agent error by adding the bin directory to the `Path` environment variable
 	$env:PSModulePath = $env:PSModulePath + ";${Env:ProgramFiles(x86)}\Git\bin"
 
@@ -167,10 +151,32 @@ try {
 	Install-ChocolateyPinnedTaskBarItem "${Env:ProgramFiles(x86)}\Microsoft Visual Studio 11.0\Common7\IDE\devenv.exe"
 	Install-ChocolateyFileAssociation ".build" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
 	Install-ChocolateyFileAssociation ".config" "${Env:ProgramFiles(x86)}\Notepad++\notepad++.exe"
+}
 
+function Install-Browsers() {
 	choco install Firefox -y
 	choco install GoogleChrome -y
 	Reboot-IfRequired
+}
+
+try {
+	# Windows Configuration
+	Update-ExecutionPolicy RemoteSigned
+	Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar
+	Disable-MicrosoftUpdate
+	Disable-UAC
+	Disable-InternetExplorerESC
+	Enable-RemoteDesktop
+
+	Write-Host $userName
+	Write-Host $userDomain
+	
+	choco install VirtualCloneDrive -y
+	Install-Sql2014
+	Install-Office2013
+	Install-VisualStudio2012
+	Install-Dev-Tools
+	Install-Browsers
 
 	choco install TelnetClient -source windowsFeatures -y
 	choco install IIS-WebServerRole -source windowsfeatures -y
