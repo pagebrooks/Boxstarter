@@ -156,7 +156,7 @@ function Install-DevTools() {
 	choco install poshgit -y
 	choco install git-credential-winstore -Version 1.2.0.0 -y
 
-	choco install redis-64
+	choco install redis-64 -y
 	choco install javaruntime -y
 	choco install golang -y
 	
